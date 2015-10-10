@@ -13,7 +13,7 @@ AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html lang="<?= Yii::$app->language ?>" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,6 +58,11 @@ AppAsset::register($this);
         <?= $content ?>
     </div>
 </div>
+<?=Yii::t('main','joke') ?><br/>
+<?=Yii::t('main','login') ?><br/>
+<?=Yii::t('main','Blog') ?><br/>
+<br/><br/>
+<?= \app\widgets\LangWidget::widget();?>
 
 <footer class="footer">
     <div class="container">

@@ -8,6 +8,7 @@ $config = [
     'bootstrap' => ['log'],
     'components' => [
         'request' => [
+            'class' => 'app\components\LangRequest',
             'baseUrl' => '',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'RS2hSfbsPp6jDfqMr8UOMJyHnGpSG7nW',
@@ -42,14 +43,37 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'class'=>'app\components\LangUrlManager',
             'rules' => [
                 '' => 'site/index',
                 'login' => 'site/login',
+                '<controller:\w+>/<action:\w+>/*'=>'<controller>/<action>',
+
             ],
         ],
+
         'assetManager' => [
             'basePath' => '@webroot/assets',
             'baseUrl' => '@web/assets'
+        ],
+
+        'language'=>'ua-UA',
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@webroot/lang',
+                    'sourceLanguage' => 'en',
+                    'fileMap' => [
+                        'main' => 'main.php',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'modules' => [
+        'blog' => [
+            'class' => 'app\modules\blog\Module',
         ],
     ],
     'params' => $params,
